@@ -11,20 +11,19 @@ EOF
 
 # start a server with a specific DISPLAY
 export DISPLAY=":45"
-vncserver :45 -geometry 2000x2000
+HEIGTH=2000
+WIDTH=2000
+vncserver :45 -geometry "${HEIGTH}x${WIDTH}"
 
 curl -s https://raw.githubusercontent.com/auto-mat/doprava-screenshot/master/url_list.txt | while read url
 do
     echo "screenshoting $url"
     # send URL to the firefox session
     sleep 1
-    DISPLAY=":45" firefox --kiosk $url &
-
-    # take a picture after waiting a bit for the load to finish
-    sleep 120
-    export filename="image`date +'%y%m%d-%H%M%S'`.png"
     mkdir -p img/
-    DISPLAY=":45" import -window root img/$filename
+    filename="/img/image`date +'%y%m%d-%H%M%S'`.png"
+    DISPLAY=":45" ./make_screenshot.py $HEIGTH $WIDTH $(which firefox-esr) $url $filename
+    # take a picture after waiting a bit for the load to finish
     aws s3 cp img/$filename s3://doprava-screenshots/img/$(echo $url | sed -e 's/[^A-Za-z0-9._-]/_/g')/$filename
 done
 
