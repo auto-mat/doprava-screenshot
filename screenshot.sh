@@ -21,10 +21,11 @@ do
     # send URL to the firefox session
     sleep 1
     mkdir -p img/
-    filename="/img/image`date +'%y%m%d-%H%M%S'`.png"
-    DISPLAY=":45" ./make_screenshot.py $HEIGTH $WIDTH $(which firefox-esr) $url $filename
+    filename="image`date +'%y%m%d-%H%M%S'`.png"
+    img_path="/img/$filename"
+    DISPLAY=":45" ./make_screenshot.py $HEIGTH $WIDTH $(which firefox-esr) $url $img_path
     # take a picture after waiting a bit for the load to finish
-    aws s3 cp img/$filename s3://doprava-screenshots/img/$(echo $url | sed -e 's/[^A-Za-z0-9._-]/_/g')/$filename
+    aws s3 cp $img_path s3://doprava-screenshots/img/$(echo $url | sed -e 's/[^A-Za-z0-9._-]/_/g')/$filename
 done
 
 for recipient in $RECIPIENTS
