@@ -19,9 +19,7 @@ driver = webdriver.Firefox(
 
 driver.get(sys.argv[4])
 
-body = driver.find_element_by_tag_name('body')
-button = body.find_element_by_tag_name('button')
-button.click()
+driver.find_element_by_xpath("//span[contains(text(), 'Souhlasím')]").click()
 
 timeout = 12
 try:
