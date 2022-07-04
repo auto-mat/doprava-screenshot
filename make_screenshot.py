@@ -19,14 +19,14 @@ driver = webdriver.Firefox(
 
 driver.get(sys.argv[4])
 
-driver.find_element_by_xpath("//span[contains(text(), 'Souhlasím')]").click()
+# driver.find_element_by_xpath("//span[contains(text(), 'Souhlasím')]").click()
 
-timeout = 12
-try:
-    element_present = EC.presence_of_element_located((By.CLASS_NAME, 'section-layout'))
-    WebDriverWait(driver, timeout).until(element_present)
-except TimeoutException:
-    print("Timed out waiting for page to load")
+# timeout = 12
+# try:
+#     element_present = EC.presence_of_element_located((By.CLASS_NAME, 'section-layout'))
+#     WebDriverWait(driver, timeout).until(element_present)
+# except TimeoutException:
+#     print("Timed out waiting for page to load")
 
 driver.save_screenshot(sys.argv[5])
 driver.quit()
