@@ -7,6 +7,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.service import Service
 
 firefox_opts = webdriver.FirefoxOptions()
 firefox_opts.headless = True
@@ -14,7 +15,8 @@ firefox_opts.add_argument(f"--height={sys.argv[1]}")
 firefox_opts.add_argument(f"--width={sys.argv[2]}")
 
 driver = webdriver.Firefox(
-    firefox_binary=sys.argv[3], options=firefox_opts,
+    service=Service(sys.argv[3]),
+    options=firefox_opts,
 )
 
 driver.get(sys.argv[4])
