@@ -19,5 +19,5 @@ done
 
 for recipient in $RECIPIENTS
 do
-    aws ses send-email --from root@auto-mat.cz --to $recipient --subject "Screenshot dopravy vygenerován" --text "http://doprava-screenshots.s3-website-eu-west-1.amazonaws.com/img/"
+    aws ses send-email --from root@auto-mat.cz --to $recipient --subject "Screenshot dopravy vygenerován" --text "http://doprava-screenshots.s3-website-eu-west-1.amazonaws.com"
 done
