@@ -1,5 +1,5 @@
-FROM alpine:latest
-ENV GECKO_DRIVER_VERSION='v0.31.0'
+FROM alpine:3.19
+ENV GECKO_DRIVER_VERSION='v0.34.0'
 ENV GECKO_DRIVER_ARCHIVE_FILE=geckodriver-$GECKO_DRIVER_VERSION-linux64.tar.gz
 ENV GECKO_DRIVER_URL=https://github.com/mozilla/geckodriver/releases/download/$GECKO_DRIVER_VERSION/$GECKO_DRIVER_ARCHIVE_FILE
 RUN sh -c "apk update && apk add aws-cli curl firefox python3 py3-pip && pip install -U selenium"
