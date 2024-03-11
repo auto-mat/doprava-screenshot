@@ -13,6 +13,8 @@ firefox_opts = webdriver.FirefoxOptions()
 firefox_opts.headless = True
 firefox_opts.add_argument(f"--height={sys.argv[1]}")
 firefox_opts.add_argument(f"--width={sys.argv[2]}")
+# Local testing
+# firefox_opts.binary_location = "/usr/bin/firefox-bin"
 
 driver = webdriver.Firefox(
     service=Service(sys.argv[3]),
@@ -21,7 +23,7 @@ driver = webdriver.Firefox(
 
 driver.get(sys.argv[4])
 
-# driver.find_element_by_xpath("//span[contains(text(), 'Souhlasím')]").click()
+driver.find_element(By.XPATH, "//span[contains(text(), 'Přijmout vše')]").click()
 
 # timeout = 12
 # try:
