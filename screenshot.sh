@@ -12,7 +12,7 @@ do
     mkdir -p img/
     filename="image`date +'%y%m%d-%H%M%S'`.png"
     img_path="/img/$filename"
-    ./make_screenshot.py $HEIGTH $WIDTH $(which geckodriver) $url $img_path
+    ./venv/bin/python make_screenshot.py $HEIGTH $WIDTH $(which geckodriver) $url $img_path
     # take a picture after waiting a bit for the load to finish
     aws s3 cp $img_path s3://doprava-screenshots/img/$(echo $url | sed -e 's/[^A-Za-z0-9._-]/_/g')/$filename
 done
