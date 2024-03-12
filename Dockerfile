@@ -5,7 +5,7 @@ ENV GECKO_DRIVER_URL=https://github.com/mozilla/geckodriver/releases/download/$G
     WORK_DIR=/usr/local/bin/
 WORKDIR $WORK_DIR
 RUN apk update \
-    && apk add --no-cache aws-cli curl firefox python3 py3-pip unzip \
+    && apk add --no-cache aws-cli curl firefox python3 py3-pip \
     && python3 -m venv ./venv \
     && . ./venv/bin/activate \
     && pip install selenium==4.0.0 \
