@@ -10,7 +10,7 @@ https://firefox-source-docs.mozilla.org/testing/geckodriver/Support.html
 
 ```
 $
-$ DOCKER_IMG_TAG=auto0mat/doprava-screenshot:12
+$ DOCKER_IMG_TAG=auto0mat/dopravni-screenshots:12
 # Build Docker img
 $ docker buildx build -t $DOCKER_IMG_TAG .
 
